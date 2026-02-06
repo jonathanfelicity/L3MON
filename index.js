@@ -8,7 +8,8 @@
 const
     express = require('express'),
     app = express(),
-    IO = require('socket.io'),
+    http = require('http'),
+    { Server } = require('socket.io'),
     geoip = require('geoip-lite'),
     CONST = require('./includes/const'),
     db = require('./includes/databaseGateway'),
@@ -24,7 +25,9 @@ global.clientManager = clientManager;
 global.apkBuilder = apkBuilder;
 
 // spin up socket server
-let client_io = IO.listen(CONST.control_port);
+const controlServer = http.createServer();
+const client_io = new Server(controlServer);
+controlServer.listen(CONST.control_port);
 
 client_io.sockets.pingInterval = 30000;
 client_io.on('connection', (socket) => {
