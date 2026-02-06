@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Database files (contains credentials)
+maindb.json
+
+# Client data
+clientData/
+
+# Build artifacts
+assets/webpublic/build.apk
+assets/webpublic/L3MON.apk
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
